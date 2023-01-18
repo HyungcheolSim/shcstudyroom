@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shc.study.studyroom.dao.TicketMapper">
+    <!-- 모든 티켓 조회 -->
+    <select id="selectAllTicket" resultType="java.util.LinkedHashMap">
+        select ticketIdx,ticketType,ticketUserIdx,ticketSdate,ticketEdate,ticketTime,ticketExpired,ticketExpiredDt,ticketSeatIdx
+        from ticket;
+    </select>
+
+    <!-- 만료되지 않은 티켓만 조회-->
+    <select id="selectNotExpiredTicket" resultType="java.util.LinkedHashMap">
+        select ticketIdx,ticketType,ticketUserIdx,ticketSdate,ticketEdate,ticketTime,ticketExpired,ticketExpiredDt,ticketSeatIdx
+        from ticket
+        where ticketExpired='N';
+    </select>
+    <!-- 사용중인 티켓 조회-->
+    <select id="selectUsedTicket" resultType="java.util.LinkedHashMap">
+        select ticketIdx,ticketType,ticketUserIdx,ticketSdate,ticketEdate,ticketTime,ticketExpired,ticketExpiredDt,ticketSeatIdx
+        from ticket
+        where ticketExpired='N'and ticketSeatIdx !=null;
+    </select>
+    <!-- 단일 티켓 조회 -->
+    <select id="selectTicketByIdx" parameterType="int" resultType="Ticket">
+        select ticketIdx,ticketType,ticketUserIdx,ticketSdate,ticketEdate,ticketTime,ticketExpired,ticketExpiredDt,ticketSeatIdx
+        from ticket where ticketIdx=#{ticketIdx};
+    </select>
+    <!-- 티켓 등록 -->
+    <insert id="insertTicket" parameterType="Ticket" useGeneratedKeys="true" keyProperty="ticketIdx">
+        insert into ticket(ticketType,ticketUserIdx,ticketSdate,ticketEdate,ticketTime,ticketExpired,ticketExpiredDt,ticketSeatIdx)
+        values  (#{ticketType},#{ticketUserIdx},#{ticketSdate},#{ticketEdate},#{ticketTime},'N',null,null);
+    </insert>
+
+    <!-- 티켓 수정 -->
+    <update id="updateTicket" parameterType="Ticket">
+        update Ticket set
+            ticketType= #{ticketType},
+            ticketUserIdx=#{ticketUserIdx},
+            ticketSdate=#{ticketSdate},
+            ticketEdate= #{ticketEdate},
+            ticketTime=#{ticketTime},
+            ticketExpired=#{ticketExpired},
+            ticketExpiredDt=#{ticketExpiredDt},
+            ticketSeatIdx=#{ticketSeatIdx}
+        where ticketIdx=#{ticketIdx};
+    </update>
+    <!-- 티켓 삭제(만료)-->
+    <update id="deleteTicket" parameterType="int">
+        update ticket set
+            ticketExpired='Y',
+            ticketExpiredDt=now()
+        where ticketIdx=#{ticketIdx};
+    </update>
+</mapper>
