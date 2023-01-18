@@ -7,16 +7,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="studyroom" />
+        <module name="StudyRoom" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="studyroom" target="17" />
+    <bytecodeTargetLevel target="13">
+      <module name="StudyRoom" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="studyroom" options="-parameters" />
+      <module name="StudyRoom" options="-parameters" />
     </option>
   </component>
 </project>

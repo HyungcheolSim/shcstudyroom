@@ -1,3 +1,11 @@
+# Read Me First
+
+The following was discovered as part of building this project:
+
+* The JVM level was changed from '11' to '17', review
+  the [JDK Version Range](https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-Versions#jdk-version-range)
+  on the wiki for more details.
+
 # Getting Started
 
 ### Reference Documentation
@@ -9,16 +17,13 @@ For further reference, please consider the following sections:
 * [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.0.1/maven-plugin/reference/html/#build-image)
 * [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/3.0.1/reference/htmlsingle/#using.devtools)
 * [Spring Web](https://docs.spring.io/spring-boot/docs/3.0.1/reference/htmlsingle/#web)
-* [MyBatis Framework](https://mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/)
 
 ### Guides
 
 The following guides illustrate how to use some features concretely:
 
-* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 * [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [MyBatis Quick Start](https://github.com/mybatis/spring-boot-starter/wiki/Quick-Start)
+* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
 
-hihi
