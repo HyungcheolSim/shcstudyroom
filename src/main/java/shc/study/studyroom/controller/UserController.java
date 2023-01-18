@@ -2,6 +2,8 @@ package shc.study.studyroom.controller;
 
 import lombok.RequiredArgsConstructor;
 
+import org.mybatis.logging.Logger;
+import org.mybatis.logging.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import shc.study.studyroom.dto.User;
@@ -14,12 +16,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final UserService userService;
 
     @GetMapping("/hello")
-    public void test() {
+    public String test() {
+
         throw new IllegalArgumentException("hello");
+        
     }
 
     @GetMapping

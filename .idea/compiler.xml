@@ -10,7 +10,7 @@
         <module name="StudyRoom" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="13">
+    <bytecodeTargetLevel target="17">
       <module name="StudyRoom" target="17" />
     </bytecodeTargetLevel>
   </component>
