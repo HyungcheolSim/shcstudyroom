@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>header</title>
+</head>
+<!--
+
+<link rel="stylesheet" href="/static/css/header.css">
+-->
+<link th:href="@{/css/header.css}" rel="stylesheet" />
+<body>
+<!-- 환영 인사말이랑 회원가입버튼, 로그인 버튼 로그인 후에는 회원가입버튼, 로그인 버튼이 나타나지 않게 하고 로그아웃 버튼 생기게까지만.-->
+<div class="top-nav">
+    <div class="nav-detail">
+        <h2 class="top-nav-login">로그인</h2>
+        <h2 class="top-nav-login">회원가입</h2>
+    </div>
+    <div class="nav-detail">
+        <h2>미래를 위한 준비, SHC 스터디카페</h2>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>
