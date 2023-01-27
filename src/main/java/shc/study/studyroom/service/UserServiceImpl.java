@@ -29,6 +29,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User loginOneUser(String userId) {
+        logger.info("User loginOneUser(String userId)"+ userId);
+        return userMapper.selectUserById(userId);
+    }
+
+    @Override
     public User addUser(User user) {
         logger.info("User addUser(User user)"+ user);
         userMapper.insertUser(user);

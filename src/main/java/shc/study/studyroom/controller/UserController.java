@@ -52,6 +52,11 @@ public class UserController {
         return ResponseEntity.ok().body(userService.selectOneUser(userIdx));
     }
 
+    @GetMapping("/{userId}")
+    public ResponseEntity<User> getUserId(@PathVariable String userId) {
+        return ResponseEntity.ok().body(userService.loginOneUser(userId));
+    }
+
     @PostMapping
     public ResponseEntity<User> insert(@RequestBody User user) {
         return ResponseEntity.ok().body(userService.addUser(user));

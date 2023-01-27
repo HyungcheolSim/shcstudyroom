@@ -36,4 +36,11 @@
         where userIdx=#{userIdx}
     </update>
 
+    <!-- result type User -->
+    <select id="selectUserById" parameterType="String" resultType="User">
+        select userIdx,userName, userId, userPwd, userPhone, userRole,userExpired
+        from user
+        where userId = #{userId};
+    </select>
+
 </mapper>

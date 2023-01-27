@@ -10,6 +10,8 @@ public interface UserService {
 
     User selectOneUser(int userIdx);
 
+    User loginOneUser(String userId);
+
     User addUser(User user);
     User modUser(User user);
     User delUser(int userIdx);

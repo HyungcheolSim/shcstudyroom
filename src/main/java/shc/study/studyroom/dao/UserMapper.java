@@ -25,5 +25,8 @@ public interface UserMapper {
     //delete
     void deleteUser(int userIdx);
 
+    //select one by userid for login
+    User selectUserById(String userId);
+
 
 }
