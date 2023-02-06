@@ -6,12 +6,15 @@ import shc.study.studyroom.dto.User;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Mapper
 public interface UserMapper {
     //select
     List<LinkedHashMap<Object, Object>> showAllUser();
+
+    List<User> getAllUser();
 
     //select one
     User selectUserByIdx(int userIdx);
@@ -26,7 +29,7 @@ public interface UserMapper {
     void deleteUser(int userIdx);
 
     //select one by userid for login
-    User selectUserById(String userId);
+    Optional<User> selectUserById(String userId);
 
 
 }

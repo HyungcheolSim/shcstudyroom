@@ -68,3 +68,7 @@ input[type=submit]{
     margin:10px 15px 10px 0px;
 
 }
+a{
+    text-decoration: none;
+    color:rgb(164, 164, 164);
+}

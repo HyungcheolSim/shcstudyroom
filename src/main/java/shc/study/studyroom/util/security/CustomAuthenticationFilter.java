@@ -1,8 +1,10 @@
+/*
 package shc.study.studyroom.util.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,8 +17,10 @@ import shc.study.studyroom.util.InputNotFoundException;
 import java.io.IOException;
 
 @Log4j2
+@NoArgsConstructor
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-    public CustomAuthenticationFilter(final AuthenticationManager authenticationManager){
+
+    public CustomAuthenticationFilter(final AuthenticationManager authenticationManager) {
         super.setAuthenticationManager(authenticationManager);
     }
 
@@ -34,3 +38,4 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
     }
 
 }
+*/

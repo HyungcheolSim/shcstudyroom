@@ -6,7 +6,7 @@ body,html{
     height: 100%;
     margin:0;
     text-align: center;
-    background-color: cornflowerblue;
+    background-color: deepskyblue;
 }
 .top-nav .nav-detail h2{
     width:auto;
@@ -37,4 +37,3 @@ body,html{
     font-size: x-large;
 
 }
-

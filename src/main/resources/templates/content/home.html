@@ -1,29 +1,23 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/default_layout}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>main page</title>
 </head>
-
-<th:block layout:fragment="head">
-    <title>Spring Boot</title>
     <!--/* css */-->
     <!--
-        <link th:href="@{/css/home.css}" rel="stylesheet" />
-        <link th:href="@{/css/common.css}" rel="stylesheet" />
-    -->
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/static/css/home.css">
     <link rel="stylesheet" href="/static/css/common.css">
-</th:block>
+    -->
+    <link th:href="@{/css/home.css}" rel="stylesheet" />
+    <link th:href="@{/css/common.css}" rel="stylesheet" />
 <body>
-<div th:block layout:fragment="header" th:insert="~{/fragments/header}" class="header">
+<div th:insert="~{/fragments/header}" class="header">
 
 </div>
 
-<div layout:fragment="content" class="content">
+<div class="content">
     <div class="introduce_menu">
         <h3>평생학습 시대, 미래를 위한 새로운 공간</h3>
         <h2>아래에서 원하시는 메뉴를 터치해주세요</h2>
@@ -42,7 +36,7 @@
     </div>
 </div>
 
-<div th:block layout:fragment="footer" th:insert="~{/fragments/footer}" class="footer"><h2>You are in offline </h2>
+<div th:insert="~{/fragments/footer}" class="footer"><h2>You are in offline </h2>
 </div>
 </body>
 </html>

@@ -8,6 +8,10 @@
     </select>
 
     <!-- List<User>용-->
+    <select id="getAllUser" resultType="User">
+        select userIdx,userName, userId, userPwd, userPhone, userRole,userExpired
+        from user;
+    </select>
     <!-- result type User -->
     <select id="selectUserByIdx" parameterType="int" resultType="User">
         select userIdx,userName, userId, userPwd, userPhone, userRole,userExpired
