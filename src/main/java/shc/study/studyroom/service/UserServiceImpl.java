@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import shc.study.studyroom.dao.UserMapper;
-import shc.study.studyroom.dto.SignUpDTO;
 import shc.study.studyroom.dto.User;
 import shc.study.studyroom.enums.Role;
 
@@ -57,17 +56,25 @@ public class UserServiceImpl implements UserService {
 
     //회원가입
     @Override
-    public User signUp(SignUpDTO signUpDTO) {
+    //public User signUp(SignUpDTO signUpDTO) {
+    public User signUp(User user) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        User user = User.builder()
+/*        User user = User.builder()
                 .userId(signUpDTO.getUserId())
                 .userName(signUpDTO.getUserName())
                 .userPwd(passwordEncoder.encode(signUpDTO.getUserPwd()))
+
                 .userPhone(signUpDTO.getUserPhone())
                 .userRole(Role.USER)
-                .build();
+                .build();*/
+        String encodePwd= passwordEncoder.encode(user.getUserPwd());
+        user.setUserPwd(encodePwd);
+        user.setUserRole(Role.USER);
 
-        logger.info("User signup(User user)" + user.toString());
+        logger.info("User signup(User user)" + user.getUserId());
+        logger.info("User signup(User user)" + user.getUserRole());
+        logger.info("User signup(User user)" + user.getUserPwd());
+        logger.info("User signup(User user)" + encodePwd);
         userMapper.insertUser(user);
         return userMapper.selectUserByIdx(user.getUserIdx());
     }
@@ -95,12 +102,6 @@ public class UserServiceImpl implements UserService {
         authorities.add(new SimpleGrantedAuthority(Role.USER.toString()));
 
         assert user != null;
-        org.springframework.security.core.userdetails.User secuser = new org.springframework.security.core.userdetails.User(user.getUserId(), user.getUserPwd(), authorities);
-        logger.info(secuser.getUsername() + "");
-        logger.info(secuser.getPassword() + "");
-        logger.info(secuser.getAuthorities() + "");
-
-
-        return secuser;
+        return new org.springframework.security.core.userdetails.User(user.getUserId(), user.getUserPwd(), authorities);
     }
 }

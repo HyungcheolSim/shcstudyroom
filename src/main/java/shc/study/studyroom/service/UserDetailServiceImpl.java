@@ -1,3 +1,4 @@
+/*
 package shc.study.studyroom.service;
 
 import lombok.RequiredArgsConstructor;
@@ -20,3 +21,4 @@ public class UserDetailServiceImpl implements UserDetailsService {
         return userMapper.selectUserById(username).map(u -> new MyUserDetails(u, Collections.singleton(new SimpleGrantedAuthority(u.getUserRole().toString())))).orElseThrow(() -> new UserNotFoundException(username));
     }
 }
+*/

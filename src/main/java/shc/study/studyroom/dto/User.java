@@ -8,6 +8,7 @@ import shc.study.studyroom.enums.Role;
 @Setter
 
 @AllArgsConstructor
+@NoArgsConstructor
 public class User {
     private int userIdx;
     private String userName;

@@ -19,7 +19,8 @@ public interface UserService extends UserDetailsService {
     User addUser(User user);
 
     //회원가입
-    User signUp(SignUpDTO signUpDTO);
+    //User signUp(SignUpDTO signUpDTO);
+    User signUp(User user);
 
     User modUser(User user);
     User delUser(int userIdx);
