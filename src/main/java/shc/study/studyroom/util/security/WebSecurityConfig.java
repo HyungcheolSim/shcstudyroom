@@ -1,35 +1,19 @@
 package shc.study.studyroom.util.security;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import shc.study.studyroom.enums.Role;
 import shc.study.studyroom.service.UserService;
 
-import java.io.IOException;
 
 
 @Configuration
@@ -68,20 +52,21 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .httpBasic().and().csrf().disable()
-            .authorizeHttpRequests()
+                .authorizeHttpRequests()
                 .requestMatchers("/css/**", "/js/**", "/img/**", "/lib/**").permitAll()
-                .requestMatchers("/","/signup").permitAll().anyRequest().authenticated();
+                .requestMatchers("/member/**").authenticated()
+                .requestMatchers("/admin/**").authenticated()
+                .requestMatchers("/**").permitAll();
         http
-            .formLogin()
-                .loginPage("/loginV")
-                .defaultSuccessUrl("/",false)
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/")
                 .permitAll();
         http.exceptionHandling().accessDeniedPage("/denied");
         http.logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true);
-
         return http.build();
     }
 
@@ -120,17 +105,5 @@ public class WebSecurityConfig {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
-        auth.inMemoryAuthentication().withUser("shc1161").password("qwe135").roles(Role.USER.name())
-                .and()
-                .withUser("shc11611").password("qwe13524").roles(Role.ADMIN.name());
     }
-
-       /* @Bean
-    public AuthenticationManager authManager(HttpSecurity http) throws Exception {
-        AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
-        authenticationManagerBuilder.authenticationProvider(authProvider);
-        return authenticationManagerBuilder.build();
-    }*/
-
-
 }

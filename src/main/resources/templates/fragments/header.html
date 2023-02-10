@@ -14,7 +14,7 @@
 <!-- 환영 인사말이랑 회원가입버튼, 로그인 버튼 로그인 후에는 회원가입버튼, 로그인 버튼이 나타나지 않게 하고 로그아웃 버튼 생기게까지만.-->
 <div class="top-nav">
     <div class="nav-detail">
-        <h2 class="top-nav-login"><a sec:authorize="isAnonymous()" th:href="@{/loginV}">로그인</a></h2>
+        <h2 class="top-nav-login"><a sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a></h2>
         <h2 class="top-nav-login"><a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a></h2>
         <h2 class="top-nav-login"><a sec:authorize="isAnonymous()" th:href="@{/signup}">회원가입</a></h2>
         <h2 class="top-nav-login"><a th:href="@{/member/info}">내 정보</a></h2>
