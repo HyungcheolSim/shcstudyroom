@@ -2,6 +2,7 @@ package shc.study.studyroom.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import shc.study.studyroom.dao.TicketMapper;
 import shc.study.studyroom.dto.Ticket;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class TicketServiceImpl implements TicketService {
 
     private final TicketMapper ticketMapper;

@@ -12,10 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import shc.study.studyroom.enums.Role;
 import shc.study.studyroom.service.UserService;
-
-
-
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -54,8 +52,8 @@ public class WebSecurityConfig {
                 .httpBasic().and().csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/css/**", "/js/**", "/img/**", "/lib/**").permitAll()
-                .requestMatchers("/member/**").authenticated()
-                .requestMatchers("/admin/**").authenticated()
+                .requestMatchers("/member/**").hasAnyRole("USER","ADMIN")
+                .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/**").permitAll();
         http
                 .formLogin()
@@ -67,6 +65,7 @@ public class WebSecurityConfig {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true);
+
         return http.build();
     }
 

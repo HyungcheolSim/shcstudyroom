@@ -17,7 +17,7 @@
     <select id="selectUsedTicket" resultType="java.util.LinkedHashMap">
         select ticketIdx,ticketType,ticketUserIdx,ticketSdate,ticketEdate,ticketTime,ticketExpired,ticketExpiredDt,ticketSeatIdx
         from ticket
-        where ticketExpired='N'and ticketSeatIdx !=null;
+        where ticketExpired='N'and ticketSeatIdx IS NOT null;
     </select>
     <!-- 단일 티켓 조회 -->
     <select id="selectTicketByIdx" parameterType="int" resultType="Ticket">
